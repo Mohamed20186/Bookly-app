@@ -18,10 +18,9 @@ class HomeRepoImp implements HomeRepo {
       var data = await apiService.get(
         endpoint: "volumes?",
         queryParameters: {
-          'q': 'subject:Programming',     
+          'q': 'subject:Programming',
           'orderBy': 'relevance',
           'sorqedBy': 'newest',
-          'Filering': 'free-ebooks',
         },
       );
       List<BookModel> books = [];
@@ -39,11 +38,7 @@ class HomeRepoImp implements HomeRepo {
     try {
       var data = await apiService.get(
         endpoint: "volumes?",
-        queryParameters: {
-          'q': 'subject:Programming',
-          'orderBy': 'relevance',
-          'Filering': 'free-ebooks',
-        },
+        queryParameters: {'q': 'subject:new', 'orderBy': 'relevance'},
       );
       List<BookModel> books = [];
       for (var item in data['items']) {
