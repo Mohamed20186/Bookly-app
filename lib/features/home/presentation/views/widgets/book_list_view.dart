@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/core/utils/constant.dart';
 import 'package:test_app/features/home/presentation/manager/featured_book_cubit/featured_book_cubit.dart';
 import 'package:test_app/features/home/presentation/views/widgets/image_card.dart';
-import 'package:test_app/widgets/custom_error_message.dart'
+import 'package:test_app/core/widgets/custom_error_message.dart'
     show ErrorMessageWidget;
 
 class BookListView extends StatelessWidget {
