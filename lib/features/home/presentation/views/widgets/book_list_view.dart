@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/core/utils/constant.dart';
 import 'package:test_app/features/home/presentation/manager/featured_book_cubit/featured_book_cubit.dart';
 import 'package:test_app/features/home/presentation/views/widgets/image_card.dart';
+import 'package:test_app/widgets/custom_error_message.dart'
+    show ErrorMessageWidget;
 
 class BookListView extends StatelessWidget {
   const BookListView({super.key});
@@ -17,14 +19,14 @@ class BookListView extends StatelessWidget {
             child: Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) =>
-                    const ImageCard(imageUrl: Constant.testImage),
+                    ImageCard(imageUrl: state.books[index].coverUrl),
                 itemCount: 10,
                 scrollDirection: Axis.horizontal,
               ),
             ),
           );
-        }else if (state is FeaturedBookFailure) {
-          return Text(state.failure.errorMessage);
+        } else if (state is FeaturedBookFailure) {
+          return ErrorMessageWidget(message: state.failure.errorMessage);
         } else {
           return const Center(child: CircularProgressIndicator());
         }
