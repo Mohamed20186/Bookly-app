@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/core/widgets/custom_error_message.dart';
+import 'package:test_app/core/widgets/skeleton_book_card.dart';
 import 'package:test_app/features/home/presentation/manager/newset_books_cubit/newset_books_cubit.dart';
 import 'package:test_app/features/home/presentation/views/widgets/best_book_seller_card_view.dart';
 
@@ -30,7 +31,16 @@ class BookListViewBestSeller extends StatelessWidget {
         } else if (state is NewsetBooksFailure) {
           return ErrorMessageWidget(message: state.failure.errorMessage);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return ListView.builder(
+            padding: const EdgeInsets.fromLTRB(20, 12, 20, 24),
+            itemCount: 4,
+            itemBuilder: (context, index) {
+              return const Padding(
+                padding: EdgeInsets.only(bottom: 16),
+                child: SkeletonBookCard(),
+              );
+            },
+          );
         }
       },
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/core/utils/constant.dart';
+import 'package:test_app/core/widgets/book_List_shimmer.dart';
 import 'package:test_app/features/home/presentation/manager/featured_book_cubit/featured_book_cubit.dart';
 import 'package:test_app/features/home/presentation/views/widgets/image_card.dart';
 import 'package:test_app/core/widgets/custom_error_message.dart'
@@ -28,7 +29,7 @@ class BookListView extends StatelessWidget {
         } else if (state is FeaturedBookFailure) {
           return ErrorMessageWidget(message: state.failure.errorMessage);
         } else {
-          return const Center(child: CircularProgressIndicator());
+          return const BookListShimmer();
         }
       },
     );
